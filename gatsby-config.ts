@@ -1,4 +1,9 @@
 import type { GatsbyConfig } from "gatsby";
+import * as dotenv from "dotenv";
+
+dotenv.config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
 
 const config: GatsbyConfig = {
   siteMetadata: {
@@ -32,7 +37,7 @@ const config: GatsbyConfig = {
         fonts: [
           `Epilogue\:300,400,500,700`,
           `Vibur`,
-          `Fraunces\:300,400,700`,
+          `Fraunces\:200,300,400,700`,
         ],
         display: 'swap',
       },

@@ -1,5 +1,6 @@
-import * as React from "react"
-import type { HeadFC, PageProps } from "gatsby"
+import * as React from "react";
+import type { HeadFC, PageProps } from "gatsby";
+import App from "../components/App";
 
 const pageStyles = {
   backgroundColor: "#c5e7dc",
@@ -83,7 +84,9 @@ const IndexPage: React.FC<PageProps> = () => {
       <h1 style={headingStyles}>
         Good Morning!
       </h1>
-      <div style={yellowBoxStyle}>This is your featured yellow area. Customize me!</div>
+      <div style={yellowBoxStyle}>
+        <App />
+      </div>
     </main>
   )
 }
