@@ -1,96 +1,21 @@
 import * as React from "react";
 import type { HeadFC, PageProps } from "gatsby";
 import App from "../components/App";
-
-const pageStyles = {
-  backgroundColor: "#c5e7dc",
-  color: "#293134",
-  padding: 96,
-  fontFamily: "'Epilogue', sans-serif",
-}
-
-const headingStyles = {
-  marginTop: 0,
-  marginBottom: 64,
-  maxWidth: 320,
-  fontWeight: 400,
-  fontSize: 48,
-  fontFamily: "'Fraunces', sans-serif"
-}
-
-const headingAccentStyles = {
-  color: "#d85144", // red accent
-}
-
-const paragraphStyles = {
-  marginBottom: 48,
-  color: "#293134",
-}
-
-const codeStyles = {
-  color: "#0d6060",
-  padding: 4,
-  backgroundColor: "#f4f6f3",
-  fontSize: "1.25rem",
-  borderRadius: 4,
-}
-
-const listStyles = {
-  marginBottom: 96,
-  paddingLeft: 0,
-}
-
-const doclistStyles = {
-  paddingLeft: 0,
-}
-
-const listItemStyles = {
-  fontWeight: 300,
-  fontSize: 24,
-  maxWidth: 560,
-  marginBottom: 30,
-  color: "#60162c",
-}
-
-const linkStyle = {
-  color: "#0d6060",
-  fontWeight: "bold",
-  fontSize: 16,
-  verticalAlign: "5%",
-}
-
-const descriptionStyle = {
-  color: "#293134",
-  fontSize: 14,
-  marginTop: 10,
-  marginBottom: 0,
-  lineHeight: 1.25,
-}
-
-const yellowBoxStyle = {
-  backgroundColor: "#ffdb99",
-  color: "#293134",
-  padding: 20,
-  borderRadius: 8,
-  marginTop: 48,
-  fontFamily: "'Epilogue', sans-serif",
-  fontWeight: "bold",
-  textAlign: "center" as "center",
-}
+import Greeting from "../components/Greeting";
 
 const IndexPage: React.FC<PageProps> = () => {
   return (
-    <main style={pageStyles}>
-      <h1 style={headingStyles}>
-        Good Morning!
+    <main className="bg-mint text-pine p-24 font-epilogue min-h-screen">
+      <h1 className="mt-0 mb-16 max-w-[320px] font-normal text-[3rem] font-fraunces">
+        <Greeting />
       </h1>
-      <div style={yellowBoxStyle}>
+      <div className="bg-mustard text-pine p-5 rounded-lg mt-12 font-bold text-center">
         <App />
       </div>
     </main>
-  )
-}
+  );
+};
 
-export default IndexPage
+export default IndexPage;
 
-export const Head: HeadFC = () => <title>Home Page</title>
+export const Head: HeadFC = () => <title>Home Page</title>;
