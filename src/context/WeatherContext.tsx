@@ -59,7 +59,7 @@ export const WeatherProvider = ({ children }: { children: React.ReactNode }) => 
         setWeather(data);
         setError(null);
       } catch (err) {
-        setError("Failed to fetch weather.");
+        setError("Failed to fetch weather."); 
         console.error(err);
       } finally {
         setLoading(false);
