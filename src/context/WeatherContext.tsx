@@ -1,4 +1,3 @@
-// WeatherContext.tsx
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { fetchWeather, Weather } from "../utils/fetchWeather";
 
@@ -21,10 +20,18 @@ export const WeatherProvider = ({ children }: { children: React.ReactNode }) => 
   const [weather, setWeather] = useState<Weather | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
+  const [mounted, setMounted] = useState(false); // NEW
+
+  // Ensure this runs only in the browser
+  useEffect(() => {
+    setMounted(true); // Flag that we're in the browser now
+  }, []);
 
   // Step 1: Get location
   useEffect(() => {
-    if (navigator.geolocation) {
+    if (!mounted) return;
+
+    if (navigator?.geolocation) {
       const watchId = navigator.geolocation.watchPosition(
         (position) => {
           const { latitude, longitude } = position.coords;
@@ -40,7 +47,7 @@ export const WeatherProvider = ({ children }: { children: React.ReactNode }) => 
       console.warn("Geolocation not supported, using default location.");
       setCoords({ lat: 40.7128, lon: -74.0060 }); // NYC fallback
     }
-  }, []);
+  }, [mounted]);
 
   // Step 2: Fetch weather
   useEffect(() => {
@@ -61,6 +68,9 @@ export const WeatherProvider = ({ children }: { children: React.ReactNode }) => 
 
     getWeather();
   }, [coords]);
+
+  // Avoid rendering children at all during SSR
+  if (!mounted) return null;
 
   return (
     <WeatherContext.Provider value={{ coords, weather, loading, error }}>

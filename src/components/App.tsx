@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import WeatherDisplay from "./WeatherDisplay";
 import RainOverlay from "./RainOverlay";
 import Greeting from "./Greeting";
@@ -27,7 +27,7 @@ export default function App() {
       <img
         src={mountain}
         alt="A mountain landscape"
-        className="absolute bottom-0 right-0 w-[100%] h-auto opacity-20"
+        className="absolute bottom-0 right-0 w-[100%] h-auto opacity-50"
         />
       {weather && <WeatherDisplay weather={weather} />}
       </div>
