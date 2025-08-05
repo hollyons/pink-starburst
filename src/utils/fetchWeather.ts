@@ -1,4 +1,4 @@
-export interface WeatherData {
+export interface Weather {
   coord: {
     lon: number;
     lat: number;
@@ -40,7 +40,7 @@ export interface WeatherData {
   name: string;
 }
 
-export const fetchWeather = async (lat: number, lon: number): Promise<WeatherData> => {
+export const fetchWeather = async (lat: number, lon: number): Promise<Weather> => {
   const apiKey = process.env.GATSBY_WEATHER_API_KEY;
   const apiURL = process.env.GATSBY_WEATHER_API_URL
   const url = `${apiURL}?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;

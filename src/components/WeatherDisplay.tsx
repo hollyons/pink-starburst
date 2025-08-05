@@ -1,4 +1,3 @@
-// components/WeatherDisplay.tsx
 import React from "react";
 import { celsiusToFahrenheit } from "../utils/celciusToFahrenheit";
 
@@ -22,10 +21,9 @@ const WeatherDisplay: React.FC<WeatherDisplayProps> = ({ weather }) => {
   const condition = conditions[0];
 
   return (
-    <section>
-      <h2>Weather in {name}</h2>
-      <p>{condition.main} – {condition.description}</p>
-      <p>{celsiusToFahrenheit(main.temp)}°F</p>
+    <section className="absolute bottom-4 right-6 z-10 group text-lg md:text-base font-semibold px-4 py-2">
+      <h1 className="text-[72px] font-light leading-none">{celsiusToFahrenheit(main.temp)}°</h1>
+      <p className="text-sm font-light opacity-0 transition-opacity duration-500 group-hover:opacity-100">{name}</p>
     </section>
   );
 };

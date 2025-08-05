@@ -1,23 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { useTimeOfDay } from '../context/TimeOfDayContext';
 
 const Greeting: React.FC = () => {
-  const [greeting, setGreeting] = useState<string>('');
+  const { timeOfDay } = useTimeOfDay();
 
-  useEffect(() => {
-    const hour: number = new Date().getHours();
+  const greetingMap: Record<typeof timeOfDay, string> = {
+    twilight: 'Hi there early bird',
+    sunrise: 'Good morning, sunshine',
+    morning: 'Let’s seize the day, gentle soul',
+    afternoon: 'Howdy pardner',
+    sunset: 'Peace to you in the golden hour',
+    dusk: 'Hello, twilight dreamer',
+    night: 'Sweet dreams lovely one',
+    deadOfNight: 'Hey there night owl',
+  };
+  console.log('Current time of day:', timeOfDay);
 
-    if (hour >= 5 && hour < 12) {
-      setGreeting('Good Morning!');
-    } else if (hour >= 12 && hour < 17) {
-      setGreeting('Good Afternoon');
-    } else if (hour >= 17 && hour < 21) {
-      setGreeting('Good Evening!');
-    } else {
-      setGreeting('Nighty Night!');
-    }
-  }, []);
-
-  return <h1>{greeting}</h1>;
+  // Fallback in case timeOfDay is not recognized
+  if (!greetingMap[timeOfDay]) {
+    return <h1 className="mt-0 mb-16 max-w-[640px] font-normal text-[3rem] font-fraunces">Hello there friend!</h1>;
+  }
+  // Return the greeting based on the current time of day
+  return <h1 className="mt-0 mb-16 max-w-[640px] font-normal text-[3rem] font-fraunces">{greetingMap[timeOfDay]}</h1>;
 };
 
 export default Greeting;
