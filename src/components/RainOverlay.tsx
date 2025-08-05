@@ -1,11 +1,11 @@
 import React from 'react';
-import { Player } from '@lottiefiles/react-lottie-player';
+import LottieNoSSR from "./LottieNoSSr";
 import rainAnimation from '../images/Rain.json';
 
 export default function RainOverlay() {
   return (
     <div className="pointer-events-none fixed inset-0 z-50 opacity-50">
-      <Player
+      <LottieNoSSR
         autoplay
         loop
         src={rainAnimation}
